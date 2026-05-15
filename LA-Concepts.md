@@ -82,7 +82,17 @@ Three legal operations on an augmented matrix $[A \mid b]$:
 ### Worked Examples
 
 **Example 1:** System with unique solution
-$$\begin{array}{cc|c}2 & 3 & 13 \\ 1 & 1 & 5\end{array} \xrightarrow{-\frac{1}{2}\rho_1+\rho_2} \begin{array}{cc|c}2 & 3 & 13 \\ 0 & -\tfrac{1}{2} & -\tfrac{3}{2}\end{array}$$
+$$
+\begin{array}{cc|c}
+  2 & 3 & 13 \\
+  1 & 1 & 5
+\end{array}
+\xrightarrow{-\frac{1}{2}\rho_1+\rho_2}
+\begin{array}{cc|c}
+  2 & 3 & 13 \\
+  0 & -\tfrac{1}{2} & -\tfrac{3}{2}
+\end{array}
+$$
 
 Back-substitute: $y = 3$, $x = 2$.
 
@@ -95,7 +105,7 @@ Back-substitute: $y = 3$, $x = 2$.
 ### Lemma (Row Swaps are Redundant)
 
 $\rho_i \leftrightarrow \rho_j$ can be implemented using only the other two operations:
-$$\rho_i + \rho_j,\quad -\rho_j + \rho_i,\quad \rho_i + \rho_j,\quad -\rho_i$$
+$$\rho_i + \rho_j, \qquad -\rho_j + \rho_i, \qquad \rho_i + \rho_j, \qquad -\rho_i$$
 So swap is theoretically redundant (but numerically essential for stability).
 
 ---
@@ -273,7 +283,7 @@ $$\{b_1, \ldots, b_{j-1},\, v,\, b_{j+1}, \ldots, b_n\}$$
 **Proof:** Let $B' = \{b_1, \ldots, b_{j-1}, v, b_{j+1}, \ldots, b_n\}$.
 
 *Spanning:* Since $c_j \neq 0$, we can solve for $b_j$:
-$$b_j = c_j^{-1}\!\left(v - \sum_{i \neq j} c_i b_i\right)$$
+$$b_j = c_j^{-1}\left(v - \sum_{i \neq j} c_i b_i\right)$$
 So $b_j \in \text{Span}(B')$. Since every vector in $V$ is a linear combination of $b_1, \ldots, b_n$, and we can replace $b_j$ using the equation above, every vector is in $\text{Span}(B')$.
 
 *Independence:* Suppose $d_1 b_1 + \cdots + d_{j-1}b_{j-1} + d_j v + d_{j+1}b_{j+1} + \cdots + d_n b_n = \mathbf{0}$.  
@@ -479,7 +489,9 @@ $$\text{Rep}_D(h(v)) = \text{Rep}_{B,D}(h) \cdot \text{Rep}_B(v)$$
 This is ordinary matrix-vector multiplication.
 
 **Example:** $h: \mathbb{R}^2 \to \mathbb{R}^3$, $(x,y) \mapsto (x+y, 2x, x-y)$. With standard bases:
-$$h(e_1) = (1,2,1),\quad h(e_2) = (1,0,-1) \implies \text{Rep}(h) = \begin{pmatrix}1 & 1 \\ 2 & 0 \\ 1 & -1\end{pmatrix}$$
+$$h(e_1) = (1,2,1), \qquad h(e_2) = (1,0,-1)$$
+
+$$\text{Rep}(h) = \begin{pmatrix}1 & 1 \\ 2 & 0 \\ 1 & -1\end{pmatrix}$$
 
 ### Composition of Linear Maps is Linear
 
@@ -496,7 +508,7 @@ If $g: U \to V$ has matrix $G$ and $h: V \to W$ has matrix $H$ (with compatible 
 **Why is matrix multiplication defined as row-times-column?** To represent $h \circ g$, the $j$-th column of $\text{Rep}(h \circ g)$ must be $\text{Rep}_D(h(g(b_j)))$.
 
 Write $g(b_j) = \sum_k G_{kj} e_k$ (the $j$-th column of $G$ gives coordinates in the $e_k$ basis). Then:
-$$h(g(b_j)) = h\!\left(\sum_k G_{kj} e_k\right) = \sum_k G_{kj} h(e_k)$$
+$$h(g(b_j)) = h\left(\sum_k G_{kj} e_k\right) = \sum_k G_{kj} h(e_k)$$
 The $i$-th coordinate of $h(g(b_j))$ in basis $D$ is $\sum_k H_{ik} G_{kj}$ — exactly the $(i,j)$-entry of $HG$. $\square$
 
 This is the *motivation* for the definition of matrix multiplication:
@@ -504,15 +516,11 @@ $$(HG)_{ij} = \sum_k H_{ik} G_{kj}$$
 
 ### Arrow Diagrams
 
-An **arrow diagram** is a visual representation of a composition of maps:
-$$U \xrightarrow{g} V \xrightarrow{h} W$$
-with matrices written below:
+An **arrow diagram** is a visual representation of a composition of maps, written as $U \xrightarrow{g} V \xrightarrow{h} W$, with matrices $G$ and $H$ beneath each arrow:
+
 $$\mathbb{R}^n \xrightarrow{G} \mathbb{R}^m \xrightarrow{H} \mathbb{R}^p$$
 
-For change of basis: if $t: V \to V$ has matrix $T$ w.r.t. basis $B$, and $M$ is the change-of-basis matrix from $B'$ to $B$, the diagram is:
-$$V \xrightarrow{t} V$$
-$$\downarrow M^{-1} \quad \downarrow M^{-1}$$
-The new matrix w.r.t. $B'$ is $M^{-1}TM$. The diagram makes clear: convert to $B$-coordinates ($M$), apply $T$, convert back to $B'$-coordinates ($M^{-1}$).
+For change of basis: if $t: V \to V$ has matrix $T$ w.r.t. basis $B$, and $M$ is the change-of-basis matrix from $B'$ to $B$, then the matrix w.r.t. $B'$ is $M^{-1}TM$. The arrow diagram shows: convert to $B$-coordinates (multiply by $M$), apply $T$, then convert back to $B'$-coordinates (multiply by $M^{-1}$).
 
 ### Rank of a Map Equals Rank of its Matrix
 
@@ -983,7 +991,7 @@ we have $p(\lambda) = \lambda^2 - 6\lambda + 8$, so $A^2 - 6A + 8I = O$.
 Since $J$ is block-diagonal with Jordan blocks $J_{p_k}(\lambda_k)$, and $p(\lambda) = \prod_k (\lambda - \lambda_k)^{a_k}$ (where $a_k$ is the algebraic multiplicity of $\lambda_k$):
 
 For a single Jordan block $J_p(\lambda_k)$ of size $p \leq a_k$:
-$$J_p(\lambda_k) = \lambda_k I + N \quad \text{where } N = \begin{pmatrix}0&1&&\\&0&1&\\&&\ddots&1\\&&&0\end{pmatrix}$$
+$$J_p(\lambda_k) = \lambda_k I + N, \qquad N = \begin{pmatrix}0 & 1 & & \\ & 0 & 1 & \\ & & \ddots & 1 \\ & & & 0\end{pmatrix}$$
 is nilpotent with $N^p = 0$. Then:
 $$(J_p(\lambda_k) - \lambda_k I)^{a_k} = N^{a_k} = 0$$
 since $p \leq a_k$. Therefore $(J_p(\lambda_k) - \lambda_k I)^{a_k} = 0$, and since $p(\lambda) = \prod_k (\lambda - \lambda_k)^{a_k}$, the factor $(\lambda - \lambda_k)^{a_k}$ in $p$ annihilates the $k$-th block. All blocks are annihilated, so $p(J) = O$. $\square$
@@ -1032,7 +1040,13 @@ $$(I - \tilde{l}_k e_k^T)(I + \tilde{l}_k e_k^T) = I - \tilde{l}_k(e_k^T \tilde{
 (the cross-term vanishes since $e_k^T \tilde{l}_k = 0$ by sparsity).
 
 **Second stroke of luck:** $L = L_1^{-1}\cdots L_{n-1}^{-1}$ simply places each set of multipliers at their natural positions:
-$$L = \begin{pmatrix}1 & 0 & \cdots & 0 \\ l_{21} & 1 & \cdots & 0 \\ l_{31} & l_{32} & \cdots & 0 \\ \vdots & & \ddots & \vdots \\ l_{n1} & l_{n2} & \cdots & 1\end{pmatrix}$$
+$$L = \begin{pmatrix}
+  1      & 0      & \cdots & 0 \\
+  l_{21} & 1      & \cdots & 0 \\
+  l_{31} & l_{32} & \cdots & 0 \\
+  \vdots &        & \ddots & \vdots \\
+  l_{n1} & l_{n2} & \cdots & 1
+\end{pmatrix}$$
 
 **Proof:** The cross-terms in $L_k^{-1}L_{k+1}^{-1} = (I+\tilde{l}_k e_k^T)(I+\tilde{l}_{k+1}e_{k+1}^T)$ vanish since $e_k^T \tilde{l}_{k+1} = 0$. So the multipliers simply stack up. $\square$
 
@@ -1084,9 +1098,19 @@ where $L'_{k+1}$ is $L_{k+1}$ with its subdiagonal entries **permuted** by $P_k$
 $$A = \begin{pmatrix}2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 8 & 7 & 9 & 5 \\ 6 & 7 & 9 & 8\end{pmatrix}$$
 
 **Step 1 — Pivot column 1:** Largest entry in column 1 is $8$ (row 3). Swap rows 1 and 3. Record $P_1$ as a swap of rows 1 and 3.
-$$\begin{pmatrix}8 & 7 & 9 & 5 \\ 4 & 3 & 3 & 1 \\ 2 & 1 & 1 & 0 \\ 6 & 7 & 9 & 8\end{pmatrix}$$
+$$\begin{pmatrix}
+  8 & 7 & 9 & 5 \\
+  4 & 3 & 3 & 1 \\
+  2 & 1 & 1 & 0 \\
+  6 & 7 & 9 & 8
+\end{pmatrix}$$
 Eliminate below pivot: multipliers $l_{21}=\tfrac{4}{8}=\tfrac{1}{2}$, $l_{31}=\tfrac{2}{8}=\tfrac{1}{4}$, $l_{41}=\tfrac{6}{8}=\tfrac{3}{4}$.
-$$\begin{pmatrix}8 & 7 & 9 & 5 \\ 0 & -\tfrac{1}{2} & -\tfrac{3}{2} & -\tfrac{3}{2} \\ 0 & -\tfrac{3}{4} & -\tfrac{5}{4} & -\tfrac{5}{4} \\ 0 & \tfrac{7}{4} & \tfrac{9}{4} & \tfrac{17}{4}\end{pmatrix}$$
+$$\begin{pmatrix}
+  8 & 7 & 9 & 5 \\
+  0 & -\tfrac{1}{2} & -\tfrac{3}{2} & -\tfrac{3}{2} \\
+  0 & -\tfrac{3}{4} & -\tfrac{5}{4} & -\tfrac{5}{4} \\
+  0 & \tfrac{7}{4} & \tfrac{9}{4} & \tfrac{17}{4}
+\end{pmatrix}$$
 
 **Step 2 — Pivot column 2 (rows 2–4):** Largest $|\cdot|$ in column 2 below pivot is $\tfrac{7}{4}$ (row 4). Swap rows 2 and 4. Record $P_2$.
 
@@ -1117,7 +1141,7 @@ Geometrically: multiplication by an orthogonal matrix is a **rotation or reflect
 - $R$ is $n \times n$ upper-triangular with positive diagonal entries.
 
 **Derivation:** Run Gram-Schmidt on the columns $a_1, \ldots, a_n$ of $A$. Define $r_{ij} = q_i^T a_j$ (for $i \leq j$) and $r_{jj} = \|a_j - \sum_{i<j} r_{ij}q_i\|$. Then:
-$$a_j = r_{1j}q_1 + r_{2j}q_2 + \cdots + r_{jj}q_j = [q_1 \cdots q_j]\begin{pmatrix}r_{1j}\\\vdots\\r_{jj}\end{pmatrix}$$
+$$a_j = r_{1j}q_1 + r_{2j}q_2 + \cdots + r_{jj}q_j = \begin{bmatrix}q_1 & \cdots & q_j\end{bmatrix}\begin{pmatrix}r_{1j} \\ \vdots \\ r_{jj}\end{pmatrix}$$
 In matrix form: $A = QR$.
 
 **Modified Gram-Schmidt (numerically stable):**
@@ -1375,17 +1399,23 @@ The following are all equivalent:
 
 ### Key Formulas
 
-$$\text{proj}_S(v) = \sum_{i=1}^k \frac{v \cdot b_i}{b_i \cdot b_i} b_i \qquad (\{b_i\} \text{ orthogonal basis for } S)$$
+$$\text{proj}_S(v) = \sum_{i=1}^k \frac{v \cdot b_i}{b_i \cdot b_i} b_i$$
+*where $\{b_i\}$ is an orthogonal basis for $S$*
 
-$$P_S = A(A^TA)^{-1}A^T \qquad (A = \text{matrix with columns spanning } S)$$
+$$P_S = A(A^TA)^{-1}A^T$$
+*where $A$ has columns spanning $S$*
 
-$$x_{\text{LS}} = (A^TA)^{-1}A^Tb = A^+b \qquad (\text{least squares solution})$$
+$$x_{\mathrm{LS}} = (A^TA)^{-1}A^Tb = A^+b$$
+*least squares solution*
 
-$$A^{-1} = \frac{1}{\det(A)}\text{adj}(A), \qquad x_i = \frac{\det(A_i)}{\det(A)} \quad (\text{Cramer's Rule})$$
+$$A^{-1} = \frac{1}{\det(A)}\,\mathrm{adj}(A), \qquad x_i = \frac{\det(A_i)}{\det(A)}$$
+*Cramer's Rule*
 
-$$\det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)} \qquad (\text{permutation formula})$$
+$$\det(A) = \sum_{\sigma \in S_n} \mathrm{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}$$
+*permutation formula*
 
-$$A = U\Sigma V^T, \quad \text{rank}(A) = r, \quad \|A\|_2 = \sigma_1, \quad |\det(A)| = \prod \sigma_i$$
+$$A = U\Sigma V^T, \quad \mathrm{rank}(A) = r, \quad \|A\|_2 = \sigma_1, \quad |\det(A)| = \prod_i \sigma_i$$
+*SVD key facts*
 
 ---
 
