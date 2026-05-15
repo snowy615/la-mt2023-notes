@@ -82,7 +82,7 @@ Three legal operations on an augmented matrix $[A \mid b]$:
 ### Worked Examples
 
 **Example 1:** System with unique solution
-$$\begin{pmatrix}2 & 3 & | & 13 \\ 1 & 1 & | & 5\end{pmatrix} \xrightarrow{-\frac{1}{2}\rho_1+\rho_2} \begin{pmatrix}2 & 3 & | & 13 \\ 0 & -\tfrac{1}{2} & | & -\tfrac{3}{2}\end{pmatrix}$$
+$$\begin{array}{cc|c}2 & 3 & 13 \\ 1 & 1 & 5\end{array} \xrightarrow{-\frac{1}{2}\rho_1+\rho_2} \begin{array}{cc|c}2 & 3 & 13 \\ 0 & -\tfrac{1}{2} & -\tfrac{3}{2}\end{array}$$
 
 Back-substitute: $y = 3$, $x = 2$.
 
@@ -638,8 +638,10 @@ If $t: V \to V$ has eigenvectors $v_1, \ldots, v_n$ with eigenvalues $\lambda_1,
 $$\text{Rep}_B(t) = \text{diag}(\lambda_1, \ldots, \lambda_n)$$
 
 **Example:** $t: \mathbb{R}^2 \to \mathbb{R}^2$, $(x,y) \mapsto (3x+y, x+3y)$.
-- Standard basis matrix: $\begin{pmatrix}3&1\\1&3\end{pmatrix}$
-- Eigenvectors $(1,1)$ (eigenvalue 4) and $(1,-1)$ (eigenvalue 2) give diagonal representation $\begin{pmatrix}4&0\\0&2\end{pmatrix}$.
+- Standard basis matrix:
+$$\begin{pmatrix}3 & 1 \\ 1 & 3\end{pmatrix}$$
+- Eigenvectors $(1,1)$ (eigenvalue $4$) and $(1,-1)$ (eigenvalue $2$) give diagonal representation:
+$$\begin{pmatrix}4 & 0 \\ 0 & 2\end{pmatrix}$$
 
 ---
 
@@ -833,15 +835,19 @@ Eigenvectors are the nonzero vectors in $E_\lambda$.
 
 ### Worked Example
 
-$A = \begin{pmatrix}3&1\\1&3\end{pmatrix}$
+$$A = \begin{pmatrix}3 & 1 \\ 1 & 3\end{pmatrix}$$
 
-$p(\lambda) = \det\begin{pmatrix}3-\lambda & 1 \\ 1 & 3-\lambda\end{pmatrix} = (3-\lambda)^2 - 1 = \lambda^2 - 6\lambda + 8 = (\lambda-4)(\lambda-2)$
+$$p(\lambda) = \det\begin{pmatrix}3-\lambda & 1 \\ 1 & 3-\lambda\end{pmatrix} = (3-\lambda)^2 - 1 = \lambda^2 - 6\lambda + 8 = (\lambda-4)(\lambda-2)$$
 
 Eigenvalues: $\lambda_1 = 4$, $\lambda_2 = 2$.
 
-For $\lambda = 4$: $(A - 4I)v = \mathbf{0}$ gives $\begin{pmatrix}-1&1\\1&-1\end{pmatrix}v = 0$, so $E_4 = \text{Span}\{(1,1)\}$.
+For $\lambda = 4$: $(A - 4I)v = \mathbf{0}$ gives
+$$\begin{pmatrix}-1 & 1 \\ 1 & -1\end{pmatrix}v = \mathbf{0}$$
+so $E_4 = \text{Span}\{(1,1)\}$.
 
-For $\lambda = 2$: $(A - 2I)v = \mathbf{0}$ gives $\begin{pmatrix}1&1\\1&1\end{pmatrix}v = 0$, so $E_2 = \text{Span}\{(1,-1)\}$.
+For $\lambda = 2$: $(A - 2I)v = \mathbf{0}$ gives
+$$\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix}v = \mathbf{0}$$
+so $E_2 = \text{Span}\{(1,-1)\}$.
 
 ### Existence of Eigenvalues over ℂ
 
@@ -849,7 +855,9 @@ For $\lambda = 2$: $(A - 2I)v = \mathbf{0}$ gives $\begin{pmatrix}1&1\\1&1\end{p
 
 **Proof:** The characteristic polynomial $p(\lambda) = \det(A - \lambda I)$ has degree $n \geq 1$. By the Fundamental Theorem of Algebra, every polynomial of degree $\geq 1$ over $\mathbb{C}$ has at least one root. That root is an eigenvalue. $\square$
 
-**Remark:** Over $\mathbb{R}$, this fails — e.g., the $90°$ rotation matrix $\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ has characteristic polynomial $\lambda^2 + 1$, with no real roots. This is why Jordan Canonical Form is stated over $\mathbb{C}$.
+**Remark:** Over $\mathbb{R}$, this fails — e.g., the $90^\circ$ rotation matrix
+$$\begin{pmatrix}0 & -1 \\ 1 & 0\end{pmatrix}$$
+has characteristic polynomial $\lambda^2 + 1$, with no real roots. This is why Jordan Canonical Form is stated over $\mathbb{C}$.
 
 ### Key Facts
 
@@ -908,7 +916,9 @@ Since $P$ has independent columns, $P$ is invertible, giving $A = PDP^{-1}$. $\s
 **Theorem:** $A$ is diagonalisable $\iff$ for every eigenvalue $\lambda$:
 $$\text{geometric multiplicity of }\lambda = \text{algebraic multiplicity of }\lambda$$
 
-**Failure example:** $A = \begin{pmatrix}1&1\\0&1\end{pmatrix}$ has $\lambda = 1$ with algebraic multiplicity $2$ but $E_1 = \text{Span}\{(1,0)\}$ — geometric multiplicity $1$. Not diagonalisable.
+**Failure example:** The matrix
+$$A = \begin{pmatrix}1 & 1 \\ 0 & 1\end{pmatrix}$$
+has $\lambda = 1$ with algebraic multiplicity $2$ but $E_1 = \text{Span}\{(1,0)\}$ — geometric multiplicity $1$. Not diagonalisable.
 
 ### Powers of Diagonal Matrices
 
@@ -964,7 +974,9 @@ $v$ is a **generalised eigenvector** of order $k$ if $(A - \lambda I)^k v = \mat
 
 **Theorem:** If $p(\lambda) = \det(A - \lambda I)$ is the characteristic polynomial, then $p(A) = O$ (the zero matrix).
 
-**Example:** $A = \begin{pmatrix}3&1\\1&3\end{pmatrix}$, $p(\lambda) = \lambda^2 - 6\lambda + 8$. Then $A^2 - 6A + 8I = O$.
+**Example:** For
+$$A = \begin{pmatrix}3 & 1 \\ 1 & 3\end{pmatrix}$$
+we have $p(\lambda) = \lambda^2 - 6\lambda + 8$, so $A^2 - 6A + 8I = O$.
 
 **Proof via Jordan form:** Since every matrix is similar to its Jordan form over $\mathbb{C}$, write $A = PJP^{-1}$. Then $p(A) = Pp(J)P^{-1}$, so it suffices to show $p(J) = O$.
 
@@ -984,10 +996,15 @@ since $p \leq a_k$. Therefore $(J_p(\lambda_k) - \lambda_k I)^{a_k} = 0$, and si
 - Every eigenvalue of $A$ is a root of $m(\lambda)$.
 - $A$ is diagonalisable $\iff$ $m(\lambda)$ has no repeated roots.
 
-**Worked example:** Let $A = \begin{pmatrix}2&1&0\\0&2&0\\0&0&3\end{pmatrix}$ (Jordan form with blocks $J_2(2)$ and $J_1(3)$).
+**Worked example:** Let
+$$A = \begin{pmatrix}2 & 1 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3\end{pmatrix}$$
+(Jordan form with blocks $J_2(2)$ and $J_1(3)$).
 
 - Characteristic polynomial: $p(\lambda) = (\lambda-2)^2(\lambda-3)$.
-- Try $m(\lambda) = (\lambda-2)(\lambda-3)$: compute $(A-2I)(A-3I) = \begin{pmatrix}0&1&0\\0&0&0\\0&0&1\end{pmatrix}\begin{pmatrix}-1&1&0\\0&-1&0\\0&0&0\end{pmatrix} = \begin{pmatrix}0&-1&0\\0&0&0\\0&0&0\end{pmatrix} \neq O$.
+- Try $m(\lambda) = (\lambda-2)(\lambda-3)$:
+$$
+(A-2I)(A-3I) = \begin{pmatrix}0&1&0\\0&0&0\\0&0&1\end{pmatrix}\begin{pmatrix}-1&1&0\\0&-1&0\\0&0&0\end{pmatrix} = \begin{pmatrix}0&-1&0\\0&0&0\\0&0&0\end{pmatrix} \neq O
+$$
 - Try $m(\lambda) = (\lambda-2)^2(\lambda-3) = p(\lambda)$: by Cayley-Hamilton, $p(A) = O$. ✓
 
 So $m(\lambda) = (\lambda-2)^2(\lambda-3)$ — the largest Jordan block for eigenvalue $2$ has size $2$, matching the exponent.
@@ -1044,7 +1061,9 @@ Given $A = LU$, solve in two steps:
 
 **Problem:** LU without row swaps is numerically unstable.
 
-**Instability example:** $A = \begin{pmatrix}10^{-20} & 1 \\ 1 & 1\end{pmatrix}$. Without pivoting, $L$ has entry $10^{20}$; in floating point, $1 - 10^{20}$ rounds to $-10^{20}$, and the "solution" $x = (0,1)$ differs entirely from the correct $(-1,1)$.
+**Instability example:** Without pivoting, for
+$$A = \begin{pmatrix}10^{-20} & 1 \\ 1 & 1\end{pmatrix}$$
+$L$ has entry $10^{20}$; in floating-point arithmetic, $1 - 10^{20}$ rounds to $-10^{20}$, and the computed "solution" $x = (0,1)$ differs entirely from the correct $x = (-1,1)$.
 
 **Partial Pivoting:** Before eliminating column $k$, swap row $k$ with the row that has the **largest absolute value** in column $k$. This ensures all multipliers $|l_{jk}| \leq 1$.
 
