@@ -947,7 +947,15 @@ A nilpotent $n \times n$ matrix satisfies $t^n = 0$.
 ### Jordan Blocks
 
 A **$p \times p$ Jordan block** for eigenvalue $\lambda$:
-$$J_p(\lambda) = \begin{pmatrix}\lambda & 1 & 0 & \cdots & 0 \\ 0 & \lambda & 1 & \cdots & 0 \\ \vdots & & \ddots & \ddots & \vdots \\ 0 & 0 & \cdots & \lambda & 1 \\ 0 & 0 & \cdots & 0 & \lambda\end{pmatrix}$$
+$$
+J_p(\lambda) = \begin{pmatrix}
+  \lambda & 1       & 0      & \cdots & 0      \\
+  0       & \lambda & 1      & \cdots & 0      \\
+  \vdots  & \vdots  & \ddots & \ddots & \vdots \\
+  0       & 0       & \cdots & \lambda & 1      \\
+  0       & 0       & \cdots & 0      & \lambda
+\end{pmatrix}
+$$
 $\lambda$'s on the diagonal, $1$'s on the superdiagonal, $0$'s elsewhere.
 
 A $1 \times 1$ Jordan block $J_1(\lambda) = (\lambda)$ — an ordinary diagonal entry.
@@ -955,7 +963,13 @@ A $1 \times 1$ Jordan block $J_1(\lambda) = (\lambda)$ — an ordinary diagonal 
 ### Jordan Canonical Form Theorem
 
 **Theorem:** Every $n \times n$ matrix $A$ over $\mathbb{C}$ is similar to a **block diagonal Jordan matrix**:
-$$J = \begin{pmatrix}J_{p_1}(\lambda_1) & & \\ & \ddots & \\ & & J_{p_k}(\lambda_k)\end{pmatrix}$$
+$$
+J = \begin{pmatrix}
+  J_{p_1}(\lambda_1) & & 0 \\
+  & \ddots & \\
+  0 & & J_{p_k}(\lambda_k)
+\end{pmatrix}
+$$
 where the Jordan blocks are unique up to reordering.
 
 - The $\lambda_i$ are the eigenvalues (with repetition).
@@ -991,7 +1005,16 @@ we have $p(\lambda) = \lambda^2 - 6\lambda + 8$, so $A^2 - 6A + 8I = O$.
 Since $J$ is block-diagonal with Jordan blocks $J_{p_k}(\lambda_k)$, and $p(\lambda) = \prod_k (\lambda - \lambda_k)^{a_k}$ (where $a_k$ is the algebraic multiplicity of $\lambda_k$):
 
 For a single Jordan block $J_p(\lambda_k)$ of size $p \leq a_k$:
-$$J_p(\lambda_k) = \lambda_k I + N, \qquad N = \begin{pmatrix}0 & 1 & & \\ & 0 & 1 & \\ & & \ddots & 1 \\ & & & 0\end{pmatrix}$$
+$$
+J_p(\lambda_k) = \lambda_k I + N, \qquad
+N = \begin{pmatrix}
+  0      & 1      & 0      & \cdots & 0 \\
+  0      & 0      & 1      & \cdots & 0 \\
+  \vdots & \vdots & \ddots & \ddots & \vdots \\
+  0      & 0      & \cdots & 0      & 1 \\
+  0      & 0      & \cdots & 0      & 0
+\end{pmatrix}
+$$
 is nilpotent with $N^p = 0$. Then:
 $$(J_p(\lambda_k) - \lambda_k I)^{a_k} = N^{a_k} = 0$$
 since $p \leq a_k$. Therefore $(J_p(\lambda_k) - \lambda_k I)^{a_k} = 0$, and since $p(\lambda) = \prod_k (\lambda - \lambda_k)^{a_k}$, the factor $(\lambda - \lambda_k)^{a_k}$ in $p$ annihilates the $k$-th block. All blocks are annihilated, so $p(J) = O$. $\square$
@@ -1044,7 +1067,7 @@ $$L = \begin{pmatrix}
   1      & 0      & \cdots & 0 \\
   l_{21} & 1      & \cdots & 0 \\
   l_{31} & l_{32} & \cdots & 0 \\
-  \vdots &        & \ddots & \vdots \\
+  \vdots & \vdots & \ddots & \vdots \\
   l_{n1} & l_{n2} & \cdots & 1
 \end{pmatrix}$$
 
