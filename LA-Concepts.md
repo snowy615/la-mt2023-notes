@@ -82,6 +82,7 @@ Three legal operations on an augmented matrix $[A \mid b]$:
 ### Worked Examples
 
 **Example 1:** System with unique solution
+
 $$
 \begin{array}{cc|c}
   2 & 3 & 13 \\
@@ -105,7 +106,9 @@ Back-substitute: $y = 3$, $x = 2$.
 ### Lemma (Row Swaps are Redundant)
 
 $\rho_i \leftrightarrow \rho_j$ can be implemented using only the other two operations:
+
 $$\rho_i + \rho_j, \qquad -\rho_j + \rho_i, \qquad \rho_i + \rho_j, \qquad -\rho_i$$
+
 So swap is theoretically redundant (but numerically essential for stability).
 
 ---
@@ -115,7 +118,9 @@ So swap is theoretically redundant (but numerically essential for stability).
 ### Parametric Form of the Solution Set
 
 After row reduction, free variables become **parameters**. The solution set is written as:
+
 $$\{p + c_1 h_1 + c_2 h_2 + \cdots + c_k h_k \mid c_i \in \mathbb{R}\}$$
+
 where $p$ is a **particular solution** to $Ax = b$ and $h_1, \ldots, h_k$ are solutions to the **homogeneous system** $Ax = 0$.
 
 ### Homogeneous System
@@ -205,6 +210,7 @@ Proof: $v + (-1)v = 1v + (-1)v = (1 + (-1))v = 0 \cdot v = \mathbf{0}$. $\square
 **Definition — Subspace:** A subset $S \subseteq V$ is a **subspace** if it is itself a vector space under the inherited operations.
 
 **Subspace Test (efficient):** A nonempty subset $S$ is a subspace iff it is closed under linear combinations:
+
 $$v, w \in S,\ r, s \in \mathbb{R} \implies rv + sw \in S$$
 
 Equivalently: $S \neq \emptyset$, closed under $+$, closed under scalar multiplication.
@@ -225,7 +231,9 @@ Equivalently: $S \neq \emptyset$, closed under $+$, closed under scalar multipli
 ### Definition
 
 A set $\{v_1, \ldots, v_k\}$ is **linearly independent** if the only solution to
+
 $$c_1 v_1 + c_2 v_2 + \cdots + c_k v_k = \mathbf{0}$$
+
 is $c_1 = c_2 = \cdots = c_k = 0$.
 
 Otherwise the set is **linearly dependent**.
@@ -278,17 +286,22 @@ Equivalently, $B = \{b_1, \ldots, b_n\}$ is a basis iff every $v \in V$ can be w
 ### Exchange Lemma
 
 **Theorem (Exchange Lemma):** If $\{b_1, \ldots, b_n\}$ is a basis and $v = c_1 b_1 + \cdots + c_n b_n$ with $c_j \neq 0$, then replacing $b_j$ by $v$ gives another basis:
+
 $$\{b_1, \ldots, b_{j-1},\, v,\, b_{j+1}, \ldots, b_n\}$$
 
 **Proof:** Let $B' = \{b_1, \ldots, b_{j-1}, v, b_{j+1}, \ldots, b_n\}$.
 
 *Spanning:* Since $c_j \neq 0$, we can solve for $b_j$:
+
 $$b_j = c_j^{-1}\left(v - \sum_{i \neq j} c_i b_i\right)$$
+
 So $b_j \in \text{Span}(B')$. Since every vector in $V$ is a linear combination of $b_1, \ldots, b_n$, and we can replace $b_j$ using the equation above, every vector is in $\text{Span}(B')$.
 
 *Independence:* Suppose $d_1 b_1 + \cdots + d_{j-1}b_{j-1} + d_j v + d_{j+1}b_{j+1} + \cdots + d_n b_n = \mathbf{0}$.  
 Substitute $v = \sum_i c_i b_i$:
+
 $$\sum_{i \neq j}(d_i + d_j c_i)b_i + d_j c_j b_j = \mathbf{0}$$
+
 Since $\{b_i\}$ is a basis (independent), all coefficients are zero. From the $b_j$-term: $d_j c_j = 0$; since $c_j \neq 0$, $d_j = 0$. Then each $d_i + d_j c_i = d_i = 0$. $\square$
 
 ### Invariance of Basis Size (Dimension Well-Defined)
@@ -347,9 +360,11 @@ For a matrix $A$ of size $m \times n$:
 ### Rank-Nullity Theorem
 
 **Theorem:** For any $m \times n$ matrix $A$:
+
 $$\text{rank}(A) + \text{nullity}(A) = n$$
 
 Equivalently, for a linear map $h: V \to W$ with $V$ finite-dimensional:
+
 $$\dim(\text{Range}(h)) + \dim(\text{Null}(h)) = \dim(V)$$
 
 **Proof:** Let $\{k_1, \ldots, k_p\}$ be a basis for $\text{Null}(h)$. Extend to a basis $\{k_1, \ldots, k_p, b_1, \ldots, b_q\}$ for $V$ (so $p + q = \dim V$). Claim $\{h(b_1), \ldots, h(b_q)\}$ is a basis for $\text{Range}(h)$:
@@ -412,6 +427,7 @@ $V$ and $W$ are **isomorphic** ($V \cong W$) if an isomorphism exists.
 ### Definition
 
 A function $h: V \to W$ is **linear** (a **linear map** / **homomorphism**) if:
+
 $$h(c_1 v_1 + c_2 v_2) = c_1 h(v_1) + c_2 h(v_2) \quad \text{for all } v_i \in V,\, c_i \in \mathbb{R}$$
 
 Equivalently: $h(u + v) = h(u) + h(v)$ and $h(cv) = ch(v)$.
@@ -459,7 +475,9 @@ If $\{b_1, \ldots, b_n\}$ is a basis for $V$ and $v = \sum c_i b_i$, then $h(v) 
 **Definition:** For $w \in W$, the **inverse image** (preimage) is $h^{-1}(w) = \{v \in V \mid h(v) = w\}$.
 
 **Theorem:** $h^{-1}(w)$ is either empty (if $w \notin \mathcal{R}(h)$) or a coset of $\mathcal{N}(h)$:
+
 $$h^{-1}(w) = \{p\} + \mathcal{N}(h) = \{p + n \mid n \in \mathcal{N}(h)\}$$
+
 where $p$ is any particular element with $h(p) = w$.
 
 **Proof:** This is the homomorphism analogue of "general = particular + homogeneous."
@@ -482,13 +500,16 @@ where $p$ is any particular element with $h(p) = w$.
 
 **Definition:** The matrix $\text{Rep}_{B,D}(h)$ is the $m \times n$ matrix whose **$j$-th column** is $\text{Rep}_D(h(b_j))$ — the coordinate vector of $h(b_j)$ in basis $D$.
 
-If $h(b_j) = \sum_i h_{ij} d_i$, then $\text{Rep}_{B,D}(h)_{ij} = h_{ij}$.
+If $h(b_j) = \sum_i h_{ij} d_i$, then $\text{Rep}\sb{B,D}(h)\sb{ij} = h\sb{ij}$.
 
 **Computation rule:**
+
 $$\text{Rep}_D(h(v)) = \text{Rep}_{B,D}(h) \cdot \text{Rep}_B(v)$$
+
 This is ordinary matrix-vector multiplication.
 
 **Example:** $h: \mathbb{R}^2 \to \mathbb{R}^3$, $(x,y) \mapsto (x+y, 2x, x-y)$. With standard bases:
+
 $$h(e_1) = (1,2,1), \qquad h(e_2) = (1,0,-1)$$
 
 $$\text{Rep}(h) = \begin{pmatrix}1 & 1 \\ 2 & 0 \\ 1 & -1\end{pmatrix}$$
@@ -498,7 +519,9 @@ $$\text{Rep}(h) = \begin{pmatrix}1 & 1 \\ 2 & 0 \\ 1 & -1\end{pmatrix}$$
 **Lemma:** If $g: U \to V$ and $h: V \to W$ are linear, then $h \circ g: U \to W$ is linear.
 
 **Proof:** For any $u_1, u_2 \in U$ and scalars $c_1, c_2$:
+
 $$(h \circ g)(c_1 u_1 + c_2 u_2) = h(g(c_1 u_1 + c_2 u_2)) = h(c_1 g(u_1) + c_2 g(u_2))$$
+
 $$= c_1 h(g(u_1)) + c_2 h(g(u_2)) = c_1(h \circ g)(u_1) + c_2(h \circ g)(u_2). \quad\square$$
 
 ### Composition = Matrix Multiplication
@@ -508,10 +531,13 @@ If $g: U \to V$ has matrix $G$ and $h: V \to W$ has matrix $H$ (with compatible 
 **Why is matrix multiplication defined as row-times-column?** To represent $h \circ g$, the $j$-th column of $\text{Rep}(h \circ g)$ must be $\text{Rep}_D(h(g(b_j)))$.
 
 Write $g(b_j) = \sum_k G_{kj} e_k$ (the $j$-th column of $G$ gives coordinates in the $e_k$ basis). Then:
+
 $$h(g(b_j)) = h\left(\sum_k G_{kj} e_k\right) = \sum_k G_{kj} h(e_k)$$
+
 The $i$-th coordinate of $h(g(b_j))$ in basis $D$ is $\sum_k H_{ik} G_{kj}$ — exactly the $(i,j)$-entry of $HG$. $\square$
 
 This is the *motivation* for the definition of matrix multiplication:
+
 $$(HG)_{ij} = \sum_k H_{ik} G_{kj}$$
 
 ### Arrow Diagrams
@@ -545,16 +571,21 @@ For change of basis: if $t: V \to V$ has matrix $T$ w.r.t. basis $B$, and $M$ is
 ### Rotation Matrix Derivation
 
 The counter-clockwise rotation $t_\theta: \mathbb{R}^2 \to \mathbb{R}^2$ by angle $\theta$ sends:
+
 $$e_1 = (1,0) \mapsto (\cos\theta, \sin\theta), \qquad e_2 = (0,1) \mapsto (-\sin\theta, \cos\theta)$$
+
 (unit vectors mapped to points on the unit circle at angles $\theta$ and $\theta + 90°$).
 
 Since the matrix columns are $t_\theta(e_1)$ and $t_\theta(e_2)$:
+
 $$\text{Rep}(t_\theta) = \begin{pmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{pmatrix}$$
 
 ### Change of Basis for Representations
 
 If $B, B'$ are bases for $V$ and $D, D'$ for $W$, and $h$ has matrix $H = \text{Rep}_{B,D}(h)$, then:
+
 $$\text{Rep}_{B',D'}(h) = P^{-1} H Q$$
+
 where $Q = \text{Rep}_{B',B}(\text{id}_V)$ and $P = \text{Rep}_{D',D}(\text{id}_W)$.
 
 ---
@@ -563,12 +594,14 @@ where $Q = \text{Rep}_{B',B}(\text{id}_V)$ and $P = \text{Rep}_{D',D}(\text{id}_
 
 ### Matrix Operations
 
-**Addition:** $(A + B)_{ij} = A_{ij} + B_{ij}$. Defined for same-size matrices only.
+**Addition:** $(A + B)\sb{ij} = A\sb{ij} + B\sb{ij}$. Defined for same-size matrices only.
 
-**Scalar multiplication:** $(cA)_{ij} = c \cdot A_{ij}$.
+**Scalar multiplication:** $(cA)\sb{ij} = c \cdot A\sb{ij}$.
 
 **Matrix multiplication:** If $A$ is $m \times p$ and $B$ is $p \times n$, then $AB$ is $m \times n$:
+
 $$(AB)_{ij} = \sum_{k=1}^p A_{ik} B_{kj}$$
+
 The $(i,j)$-entry is the **dot product** of row $i$ of $A$ with column $j$ of $B$.
 
 **Properties:**
@@ -579,7 +612,7 @@ The $(i,j)$-entry is the **dot product** of row $i$ of $A$ with column $j$ of $B
 
 ### Transpose
 
-$(A^T)_{ij} = A_{ji}$ — swap rows and columns.
+$(A^T)\sb{ij} = A\sb{ji}$ — swap rows and columns.
 
 **Properties:**
 - $(A + B)^T = A^T + B^T$
@@ -588,6 +621,7 @@ $(A^T)_{ij} = A_{ji}$ — swap rows and columns.
 - $(cA)^T = cA^T$
 
 **Proof of $(AB)^T = B^T A^T$:**
+
 $$((AB)^T)_{ij} = (AB)_{ji} = \sum_k A_{jk} B_{ki} = \sum_k (B^T)_{ik}(A^T)_{kj} = (B^T A^T)_{ij}. \quad\square$$
 
 ### Matrix Inverses
@@ -620,10 +654,12 @@ $(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = AIA^{-1} = AA^{-1} = I$. $\square$
 ### Change of Basis Matrix
 
 If $B = (b_1, \ldots, b_n)$ and $B' = (b'_1, \ldots, b'_n)$ are two ordered bases for $V$, the **change of basis matrix from $B'$ to $B$** is:
+
 $$M = \text{Rep}_{B', B}(\text{id})$$
+
 Its $j$-th column is $\text{Rep}_B(b'_j)$ — coordinates of new basis vectors in the old basis.
 
-**Usage:** $\text{Rep}_B(v) = M \cdot \text{Rep}_{B'}(v)$ for all $v$.
+**Usage:** $\text{Rep}\sb{B}(v) = M \cdot \text{Rep}\sb{B'}(v)$ for all $v$.
 
 **Invertibility:** The change-of-basis matrix is always invertible; $M^{-1}$ changes from $B$ to $B'$.
 
@@ -643,12 +679,16 @@ Its $j$-th column is $\text{Rep}_B(b'_j)$ — coordinates of new basis vectors i
 ### Diagonalisation as Change of Basis
 
 If $t: V \to V$ has eigenvectors $v_1, \ldots, v_n$ with eigenvalues $\lambda_1, \ldots, \lambda_n$, choosing $B = (v_1, \ldots, v_n)$ as basis makes $\text{Rep}_B(t)$ diagonal:
+
 $$\text{Rep}_B(t) = \text{diag}(\lambda_1, \ldots, \lambda_n)$$
 
 **Example:** $t: \mathbb{R}^2 \to \mathbb{R}^2$, $(x,y) \mapsto (3x+y, x+3y)$.
 - Standard basis matrix:
+
 $$\begin{pmatrix}3 & 1 \\ 1 & 3\end{pmatrix}$$
+
 - Eigenvectors $(1,1)$ (eigenvalue $4$) and $(1,-1)$ (eigenvalue $2$) give diagonal representation:
+
 $$\begin{pmatrix}4 & 0 \\ 0 & 2\end{pmatrix}$$
 
 ---
@@ -674,9 +714,11 @@ $$\begin{pmatrix}4 & 0 \\ 0 & 2\end{pmatrix}$$
 ### Projection onto a Subspace
 
 **Projection onto a line spanned by $s$:**
+
 $$\text{proj}_s(v) = \frac{v \cdot s}{s \cdot s} \, s$$
 
 **Projection onto subspace $S$ with orthogonal basis $\{b_1, \ldots, b_k\}$:**
+
 $$\text{proj}_S(v) = \frac{v \cdot b_1}{b_1 \cdot b_1} b_1 + \cdots + \frac{v \cdot b_k}{b_k \cdot b_k} b_k$$
 
 **Key property:** $v - \text{proj}_S(v)$ is orthogonal to every vector in $S$.
@@ -688,8 +730,11 @@ $$\text{proj}_S(v) = \frac{v \cdot b_1}{b_1 \cdot b_1} b_1 + \cdots + \frac{v \c
 Given linearly independent vectors $a_1, \ldots, a_n$, produce orthogonal vectors $q_1, \ldots, q_n$ with the same span:
 
 $$q_1 := a_1$$
+
 $$q_2 := a_2 - \frac{q_1 \cdot a_2}{q_1 \cdot q_1} q_1$$
+
 $$q_3 := a_3 - \frac{q_1 \cdot a_3}{q_1 \cdot q_1} q_1 - \frac{q_2 \cdot a_3}{q_2 \cdot q_2} q_2$$
+
 $$q_k := a_k - \sum_{i=1}^{k-1} \frac{q_i \cdot a_k}{q_i \cdot q_i} q_i$$
 
 At each step: subtract the projection of $a_k$ onto the span of already-computed $q$'s.
@@ -699,9 +744,11 @@ At each step: subtract the projection of $a_k$ onto the span of already-computed
 ### Projection Matrix
 
 If $W = \text{Col}(A)$ and $A$ has orthonormal columns ($Q^TQ = I$):
+
 $$P = QQ^T$$
 
 In general (columns not orthonormal):
+
 $$P = A(A^TA)^{-1}A^T$$
 
 **Properties of a projection matrix:**
@@ -744,12 +791,15 @@ $A$ is invertible iff $ad - bc \neq 0$.
 **Cofactor:** $C_{ij} = (-1)^{i+j} M_{ij}$.
 
 **Expansion along row $i$:**
+
 $$\det(A) = \sum_{j=1}^n a_{ij} C_{ij} = \sum_{j=1}^n (-1)^{i+j} a_{ij} \det(A_{ij})$$
 
 **Expansion along column $j$:**
+
 $$\det(A) = \sum_{i=1}^n a_{ij} C_{ij}$$
 
 **$3 \times 3$ formula (expanding row 1):**
+
 $$\det\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix} = a(ei-fh) - b(di-fg) + c(dh-eg)$$
 
 ### Permutation Expansion
@@ -757,7 +807,9 @@ $$\det\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix} = a(ei-fh) - b(di-fg) + c(
 **Definition:** A **permutation** $\sigma: \{1,\ldots,n\} \to \{1,\ldots,n\}$ is a bijection. The **sign** $\text{sgn}(\sigma) = (-1)^{\text{(number of inversions)}}$ where an inversion is a pair $(i,j)$ with $i < j$ but $\sigma(i) > \sigma(j)$.
 
 **Theorem (Permutation Formula):**
+
 $$\det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i,\sigma(i)}$$
+
 where $S_n$ is the set of all $n!$ permutations of $\{1,\ldots,n\}$.
 
 **For $n=3$:** 6 permutations — 3 even (sign $+1$), 3 odd (sign $-1$) — gives the $3 \times 3$ formula above.
@@ -789,14 +841,16 @@ where $S_n$ is the set of all $n!$ permutations of $\{1,\ldots,n\}$.
 
 ### Adjugate and Cramer's Rule
 
-**Adjugate (classical adjoint):** $\text{adj}(A)_{ij} = C_{ji}$ (transpose of the cofactor matrix).
+**Adjugate (classical adjoint):** $\text{adj}(A)\sb{ij} = C\sb{ji}$ (transpose of the cofactor matrix).
 
 **Theorem:** $A \cdot \text{adj}(A) = \det(A) \cdot I$.
 
 **Consequence:** If $\det(A) \neq 0$, then $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$.
 
 **Cramer's Rule:** For $Ax = b$ with $A$ invertible:
+
 $$x_i = \frac{\det(A_i)}{\det(A)}$$
+
 where $A_i$ is $A$ with column $i$ replaced by $b$.
 
 ### Geometric Interpretation
@@ -804,6 +858,7 @@ where $A_i$ is $A$ with column $i$ replaced by $b$.
 $|\det(A)|$ equals the **volume** of the parallelepiped spanned by the rows of $A$.
 
 For a linear transformation with matrix $A$ and any region $S$:
+
 $$\text{volume}(A(S)) = |\det(A)| \cdot \text{volume}(S)$$
 
 $\det(A) = 0$ iff the transformation collapses volume to lower dimension (rows dependent).
@@ -817,6 +872,7 @@ $\det(A) = 0$ iff the transformation collapses volume to lower dimension (rows d
 A linear transformation $t: V \to V$ has **eigenvalue** $\lambda$ if there exists a nonzero $v \in V$ with $t(v) = \lambda v$. (This definition is basis-independent — the eigenvalue is a property of the transformation, not a particular matrix.)
 
 A **nonzero** vector $v$ is an **eigenvector** of $A$ with **eigenvalue** $\lambda$ if:
+
 $$Av = \lambda v$$
 
 ### Finding Eigenvalues
@@ -824,7 +880,9 @@ $$Av = \lambda v$$
 $$Av = \lambda v \iff (A - \lambda I)v = \mathbf{0} \iff \det(A - \lambda I) = 0$$
 
 **Definition — Characteristic polynomial:**
+
 $$p(\lambda) = \det(A - \lambda I)$$
+
 This is a degree-$n$ polynomial for an $n \times n$ matrix.
 
 **Eigenvalues** are the roots of $p(\lambda) = 0$.
@@ -834,7 +892,9 @@ This is a degree-$n$ polynomial for an $n \times n$ matrix.
 ### Finding Eigenvectors
 
 For each eigenvalue $\lambda$, the **eigenspace** is:
+
 $$E_\lambda = \text{Null}(A - \lambda I)$$
+
 Eigenvectors are the nonzero vectors in $E_\lambda$.
 
 **Lemma:** $E_\lambda$ is a subspace of $V$ (for each fixed $\lambda$).
@@ -850,11 +910,15 @@ $$p(\lambda) = \det\begin{pmatrix}3-\lambda & 1 \\ 1 & 3-\lambda\end{pmatrix} = 
 Eigenvalues: $\lambda_1 = 4$, $\lambda_2 = 2$.
 
 For $\lambda = 4$: $(A - 4I)v = \mathbf{0}$ gives
+
 $$\begin{pmatrix}-1 & 1 \\ 1 & -1\end{pmatrix}v = \mathbf{0}$$
+
 so $E_4 = \text{Span}\{(1,1)\}$.
 
 For $\lambda = 2$: $(A - 2I)v = \mathbf{0}$ gives
+
 $$\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix}v = \mathbf{0}$$
+
 so $E_2 = \text{Span}\{(1,-1)\}$.
 
 ### Existence of Eigenvalues over ℂ
@@ -864,7 +928,9 @@ so $E_2 = \text{Span}\{(1,-1)\}$.
 **Proof:** The characteristic polynomial $p(\lambda) = \det(A - \lambda I)$ has degree $n \geq 1$. By the Fundamental Theorem of Algebra, every polynomial of degree $\geq 1$ over $\mathbb{C}$ has at least one root. That root is an eigenvalue. $\square$
 
 **Remark:** Over $\mathbb{R}$, this fails — e.g., the $90^\circ$ rotation matrix
+
 $$\begin{pmatrix}0 & -1 \\ 1 & 0\end{pmatrix}$$
+
 has characteristic polynomial $\lambda^2 + 1$, with no real roots. This is why Jordan Canonical Form is stated over $\mathbb{C}$.
 
 ### Key Facts
@@ -914,7 +980,9 @@ $A$ is **diagonalisable** if it is similar to a diagonal matrix: $A = PDP^{-1}$ 
 **Theorem:** $A$ is diagonalisable $\iff$ it has $n$ linearly independent eigenvectors.
 
 **Proof:** Let $v_1, \ldots, v_n$ be $n$ independent eigenvectors, eigenvalues $\lambda_1, \ldots, \lambda_n$. Set $P = [v_1 \mid \cdots \mid v_n]$. Then:
+
 $$AP = [Av_1 \mid \cdots \mid Av_n] = [\lambda_1 v_1 \mid \cdots \mid \lambda_n v_n] = PD$$
+
 Since $P$ has independent columns, $P$ is invertible, giving $A = PDP^{-1}$. $\square$
 
 **Corollary:** $A$ with $n$ **distinct** eigenvalues is diagonalisable (eigenvectors for distinct eigenvalues are independent).
@@ -922,10 +990,13 @@ Since $P$ has independent columns, $P$ is invertible, giving $A = PDP^{-1}$. $\s
 ### Full Criterion (Using Multiplicities)
 
 **Theorem:** $A$ is diagonalisable $\iff$ for every eigenvalue $\lambda$:
+
 $$\text{geometric multiplicity of }\lambda = \text{algebraic multiplicity of }\lambda$$
 
 **Failure example:** The matrix
+
 $$A = \begin{pmatrix}1 & 1 \\ 0 & 1\end{pmatrix}$$
+
 has $\lambda = 1$ with algebraic multiplicity $2$ but $E_1 = \text{Span}\{(1,0)\}$ — geometric multiplicity $1$. Not diagonalisable.
 
 ### Powers of Diagonal Matrices
@@ -947,6 +1018,7 @@ A nilpotent $n \times n$ matrix satisfies $t^n = 0$.
 ### Jordan Blocks
 
 A **$p \times p$ Jordan block** for eigenvalue $\lambda$:
+
 $$
 J_p(\lambda) = \begin{pmatrix}
   \lambda & 1       & 0      & \cdots & 0      \\
@@ -956,6 +1028,7 @@ J_p(\lambda) = \begin{pmatrix}
   0       & 0       & \cdots & 0      & \lambda
 \end{pmatrix}
 $$
+
 $\lambda$'s on the diagonal, $1$'s on the superdiagonal, $0$'s elsewhere.
 
 A $1 \times 1$ Jordan block $J_1(\lambda) = (\lambda)$ — an ordinary diagonal entry.
@@ -963,6 +1036,7 @@ A $1 \times 1$ Jordan block $J_1(\lambda) = (\lambda)$ — an ordinary diagonal 
 ### Jordan Canonical Form Theorem
 
 **Theorem:** Every $n \times n$ matrix $A$ over $\mathbb{C}$ is similar to a **block diagonal Jordan matrix**:
+
 $$
 J = \begin{pmatrix}
   J_{p_1}(\lambda_1) & & 0 \\
@@ -970,6 +1044,7 @@ J = \begin{pmatrix}
   0 & & J_{p_k}(\lambda_k)
 \end{pmatrix}
 $$
+
 where the Jordan blocks are unique up to reordering.
 
 - The $\lambda_i$ are the eigenvalues (with repetition).
@@ -997,7 +1072,9 @@ $v$ is a **generalised eigenvector** of order $k$ if $(A - \lambda I)^k v = \mat
 **Theorem:** If $p(\lambda) = \det(A - \lambda I)$ is the characteristic polynomial, then $p(A) = O$ (the zero matrix).
 
 **Example:** For
+
 $$A = \begin{pmatrix}3 & 1 \\ 1 & 3\end{pmatrix}$$
+
 we have $p(\lambda) = \lambda^2 - 6\lambda + 8$, so $A^2 - 6A + 8I = O$.
 
 **Proof via Jordan form:** Since every matrix is similar to its Jordan form over $\mathbb{C}$, write $A = PJP^{-1}$. Then $p(A) = Pp(J)P^{-1}$, so it suffices to show $p(J) = O$.
@@ -1005,6 +1082,7 @@ we have $p(\lambda) = \lambda^2 - 6\lambda + 8$, so $A^2 - 6A + 8I = O$.
 Since $J$ is block-diagonal with Jordan blocks $J_{p_k}(\lambda_k)$, and $p(\lambda) = \prod_k (\lambda - \lambda_k)^{a_k}$ (where $a_k$ is the algebraic multiplicity of $\lambda_k$):
 
 For a single Jordan block $J_p(\lambda_k)$ of size $p \leq a_k$:
+
 $$
 J_p(\lambda_k) = \lambda_k I + N, \qquad
 N = \begin{pmatrix}
@@ -1015,8 +1093,11 @@ N = \begin{pmatrix}
   0      & 0      & \cdots & 0      & 0
 \end{pmatrix}
 $$
+
 is nilpotent with $N^p = 0$. Then:
+
 $$(J_p(\lambda_k) - \lambda_k I)^{a_k} = N^{a_k} = 0$$
+
 since $p \leq a_k$. Therefore $(J_p(\lambda_k) - \lambda_k I)^{a_k} = 0$, and since $p(\lambda) = \prod_k (\lambda - \lambda_k)^{a_k}$, the factor $(\lambda - \lambda_k)^{a_k}$ in $p$ annihilates the $k$-th block. All blocks are annihilated, so $p(J) = O$. $\square$
 
 ### Minimal Polynomial
@@ -1028,14 +1109,18 @@ since $p \leq a_k$. Therefore $(J_p(\lambda_k) - \lambda_k I)^{a_k} = 0$, and si
 - $A$ is diagonalisable $\iff$ $m(\lambda)$ has no repeated roots.
 
 **Worked example:** Let
+
 $$A = \begin{pmatrix}2 & 1 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3\end{pmatrix}$$
+
 (Jordan form with blocks $J_2(2)$ and $J_1(3)$).
 
 - Characteristic polynomial: $p(\lambda) = (\lambda-2)^2(\lambda-3)$.
 - Try $m(\lambda) = (\lambda-2)(\lambda-3)$:
+
 $$
 (A-2I)(A-3I) = \begin{pmatrix}0&1&0\\0&0&0\\0&0&1\end{pmatrix}\begin{pmatrix}-1&1&0\\0&-1&0\\0&0&0\end{pmatrix} = \begin{pmatrix}0&-1&0\\0&0&0\\0&0&0\end{pmatrix} \neq O
 $$
+
 - Try $m(\lambda) = (\lambda-2)^2(\lambda-3) = p(\lambda)$: by Cayley-Hamilton, $p(A) = O$. ✓
 
 So $m(\lambda) = (\lambda-2)^2(\lambda-3)$ — the largest Jordan block for eigenvalue $2$ has size $2$, matching the exponent.
@@ -1049,7 +1134,9 @@ So $m(\lambda) = (\lambda-2)^2(\lambda-3)$ — the largest Jordan block for eige
 ### LU Factorisation
 
 **Setting:** $A$ is $n \times n$. Gaussian elimination without row swaps can be written as:
+
 $$L_{n-1} \cdots L_2 L_1 A = U$$
+
 where each $L_k$ is a unit lower-triangular matrix that zeroes out column $k$ below the diagonal.
 
 **LU Factorisation:** Setting $L = L_1^{-1} L_2^{-1} \cdots L_{n-1}^{-1}$ gives $A = LU$ where:
@@ -1059,10 +1146,13 @@ where each $L_k$ is a unit lower-triangular matrix that zeroes out column $k$ be
 **Multipliers:** $l_{jk} = u_{jk}/u_{kk}$ (value divided by pivot).
 
 **First stroke of luck:** $L_k^{-1}$ is obtained by **negating** the subdiagonal entries of $L_k$. Since $L_k = I - \tilde{l}_k e_k^T$:
+
 $$(I - \tilde{l}_k e_k^T)(I + \tilde{l}_k e_k^T) = I - \tilde{l}_k(e_k^T \tilde{l}_k)e_k^T = I$$
+
 (the cross-term vanishes since $e_k^T \tilde{l}_k = 0$ by sparsity).
 
 **Second stroke of luck:** $L = L_1^{-1}\cdots L_{n-1}^{-1}$ simply places each set of multipliers at their natural positions:
+
 $$L = \begin{pmatrix}
   1      & 0      & \cdots & 0 \\
   l_{21} & 1      & \cdots & 0 \\
@@ -1071,7 +1161,7 @@ $$L = \begin{pmatrix}
   l_{n1} & l_{n2} & \cdots & 1
 \end{pmatrix}$$
 
-**Proof:** The cross-terms in $L_k^{-1}L_{k+1}^{-1} = (I+\tilde{l}_k e_k^T)(I+\tilde{l}_{k+1}e_{k+1}^T)$ vanish since $e_k^T \tilde{l}_{k+1} = 0$. So the multipliers simply stack up. $\square$
+**Proof:** The cross-terms in $L_k^{-1}L_{k+1}^{-1} = (I+\tilde{l}\sb{k} e_k^T)(I+\tilde{l}\sb{k+1}e_{k+1}^T)$ vanish since $e_k^T \tilde{l}\sb{k+1} = 0$. So the multipliers simply stack up. $\square$
 
 **Algorithm:**
 ```
@@ -1099,19 +1189,25 @@ Given $A = LU$, solve in two steps:
 **Problem:** LU without row swaps is numerically unstable.
 
 **Instability example:** Without pivoting, for
+
 $$A = \begin{pmatrix}10^{-20} & 1 \\ 1 & 1\end{pmatrix}$$
+
 $L$ has entry $10^{20}$; in floating-point arithmetic, $1 - 10^{20}$ rounds to $-10^{20}$, and the computed "solution" $x = (0,1)$ differs entirely from the correct $x = (-1,1)$.
 
 **Partial Pivoting:** Before eliminating column $k$, swap row $k$ with the row that has the **largest absolute value** in column $k$. This ensures all multipliers $|l_{jk}| \leq 1$.
 
 **PLU Factorisation:** With partial pivoting:
+
 $$PA = LU$$
+
 where $P$ is a **permutation matrix**, $L$ is unit lower-triangular with $|l_{jk}| \leq 1$, and $U$ is upper-triangular.
 
 **Third stroke of luck (separating Ps and Ls):** With partial pivoting, elimination produces $L_{n-1}P_{n-1}\cdots L_1P_1 A = U$. Naively this mixes permutations and lower-triangular matrices. The key fact is:
 
 For a permutation matrix $P_k$ (a swap of rows $k$ and $j$, $j > k$) and a lower-triangular $L_{k+1}$ that only touches rows below row $k+1$, we have:
+
 $$P_k L_{k+1} = L'_{k+1} P_k$$
+
 where $L'_{k+1}$ is $L_{k+1}$ with its subdiagonal entries **permuted** by $P_k$. This lets us "bubble" all the $P_k$'s to the right, collecting $P = P_{n-1}\cdots P_1$ on the right and modified $L'_k$'s on the left whose product is still unit lower-triangular with $|l_{jk}| \leq 1$. The result is $L^{-1}U = PA$, i.e., $PA = LU$. $\square$
 
 **Interpretation:** Permute the rows of $A$ according to $P$, then LU-factorize $PA$ without pivoting.
@@ -1121,13 +1217,16 @@ where $L'_{k+1}$ is $L_{k+1}$ with its subdiagonal entries **permuted** by $P_k$
 $$A = \begin{pmatrix}2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 8 & 7 & 9 & 5 \\ 6 & 7 & 9 & 8\end{pmatrix}$$
 
 **Step 1 — Pivot column 1:** Largest entry in column 1 is $8$ (row 3). Swap rows 1 and 3. Record $P_1$ as a swap of rows 1 and 3.
+
 $$\begin{pmatrix}
   8 & 7 & 9 & 5 \\
   4 & 3 & 3 & 1 \\
   2 & 1 & 1 & 0 \\
   6 & 7 & 9 & 8
 \end{pmatrix}$$
+
 Eliminate below pivot: multipliers $l_{21}=\tfrac{4}{8}=\tfrac{1}{2}$, $l_{31}=\tfrac{2}{8}=\tfrac{1}{4}$, $l_{41}=\tfrac{6}{8}=\tfrac{3}{4}$.
+
 $$\begin{pmatrix}
   8 & 7 & 9 & 5 \\
   0 & -\tfrac{1}{2} & -\tfrac{3}{2} & -\tfrac{3}{2} \\
@@ -1152,7 +1251,9 @@ Continue elimination to get $U$. The combined permutation $P = P_2 P_1$ and the 
 Columns of $Q$ form an **orthonormal basis**: unit length and pairwise orthogonal.
 
 **Key property:** Multiplication by $Q$ preserves lengths and angles:
+
 $$\|Qx\|^2 = (Qx)^T(Qx) = x^TQ^TQx = x^Tx = \|x\|^2$$
+
 $$(Qx)\cdot(Qy) = x^TQ^TQy = x^Ty$$
 
 Geometrically: multiplication by an orthogonal matrix is a **rotation or reflection**.
@@ -1164,7 +1265,9 @@ Geometrically: multiplication by an orthogonal matrix is a **rotation or reflect
 - $R$ is $n \times n$ upper-triangular with positive diagonal entries.
 
 **Derivation:** Run Gram-Schmidt on the columns $a_1, \ldots, a_n$ of $A$. Define $r_{ij} = q_i^T a_j$ (for $i \leq j$) and $r_{jj} = \|a_j - \sum_{i<j} r_{ij}q_i\|$. Then:
+
 $$a_j = r_{1j}q_1 + r_{2j}q_2 + \cdots + r_{jj}q_j = \begin{bmatrix}q_1 & \cdots & q_j\end{bmatrix}\begin{pmatrix}r_{1j} \\ \vdots \\ r_{jj}\end{pmatrix}$$
+
 In matrix form: $A = QR$.
 
 **Modified Gram-Schmidt (numerically stable):**
@@ -1193,7 +1296,9 @@ Householder is cheaper and more numerically stable for large problems; both are 
 ### Solving $Ax = b$ via QR
 
 For square nonsingular $A = QR$:
+
 $$QRx = b \implies Rx = Q^Tb$$
+
 Solve by back-substitution. More stable than LU for ill-conditioned systems.
 
 **Principle: don't invert $A$ — QR-factorize instead.**
@@ -1203,6 +1308,7 @@ Solve by back-substitution. More stable than LU for ill-conditioned systems.
 **Problem:** Given $A \in \mathbb{R}^{m \times n}$ with $m > n$ (overdetermined), find $x$ minimising $\|b - Ax\|_2$.
 
 **Normal Equations:** The minimiser satisfies $A^T(b - Ax) = \mathbf{0}$, giving:
+
 $$A^TAx = A^Tb$$
 
 **Lemma:** If $A$ has full column rank $n$, then $A^TA$ is invertible.
@@ -1215,6 +1321,7 @@ $$A^TAx = A^Tb$$
 ### Least Squares via QR
 
 Let $A = QR$ (reduced, $Q^TQ = I$, $R$ nonsingular). Then:
+
 $$A^TAx = A^Tb \implies R^TQ^TQRx = R^TQ^Tb \implies Rx = Q^Tb$$
 
 **Algorithm:**
@@ -1229,7 +1336,9 @@ This is numerically more stable than solving the normal equations directly ($A^T
 ### Linear Regression Example
 
 Fit $y = c + mt$ to data $(t_i, y_i)$. Set up:
+
 $$A = \begin{pmatrix}1 & t_1 \\ 1 & t_2 \\ \vdots & \vdots \\ 1 & t_m\end{pmatrix}, \quad x = \begin{pmatrix}c \\ m\end{pmatrix}, \quad b = \begin{pmatrix}y_1 \\ \vdots \\ y_m\end{pmatrix}$$
+
 Normal equations give the least-squares line of best fit.
 
 ---
@@ -1244,6 +1353,7 @@ Normal equations give the least-squares line of best fit.
 3. $\|rx\| = |r|\,\|x\|$ (homogeneity)
 
 **$p$-norms** (for $p \geq 1$):
+
 $$\|x\|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$$
 
 | $p$ | Norm | Formula | Name |
@@ -1255,6 +1365,7 @@ $$\|x\|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$$
 ### Induced Matrix Norms
 
 **Definition — Induced (operator) norm:** Given a vector norm $\|\cdot\|$, the induced matrix norm for $A \in \mathbb{R}^{m \times n}$:
+
 $$\|A\| = \sup_{x \neq \mathbf{0}} \frac{\|Ax\|}{\|x\|} = \sup_{\|x\|=1} \|Ax\|$$
 
 **Interpretation:** Largest amplification factor $A$ applies to any unit vector.
@@ -1266,11 +1377,12 @@ $$\|A\| = \sup_{x \neq \mathbf{0}} \frac{\|Ax\|}{\|x\|} = \sup_{\|x\|=1} \|Ax\|$
 **Proof:** $\|ABx\| \leq \|A\|\,\|Bx\| \leq \|A\|\,\|B\|\,\|x\|$; take supremum. $\square$
 
 **Specific induced norms:**
-- $\|A\|_1 = \max_j \sum_i |a_{ij}|$ — maximum column sum (absolute values).
-- $\|A\|_\infty = \max_i \sum_j |a_{ij}|$ — maximum row sum (absolute values).
-- $\|A\|_2 = \sigma_1$ — largest singular value.
+- $\|A\|\sb{1} = \max_j \sum_i \lvert a_{ij} \rvert$ — maximum column sum (absolute values).
+- $\|A\|\sb{\infty} = \max_i \sum_j \lvert a_{ij} \rvert$ — maximum row sum (absolute values).
+- $\|A\|\sb{2} = \sigma_1$ — largest singular value.
 
 **Frobenius norm** (not induced):
+
 $$\|A\|_F = \sqrt{\sum_i\sum_j a_{ij}^2}$$
 
 **Orthogonal matrices:** $\|Q\|_2 = 1$ and $\|QA\|_2 = \|A\|_2$ (orthogonal multiplication is isometric in 2-norm).
@@ -1282,7 +1394,9 @@ $$\|A\|_F = \sqrt{\sum_i\sum_j a_{ij}^2}$$
 ### Definition
 
 For $A \in \mathbb{R}^{m \times n}$ (assume $m \geq n$), the **SVD** is:
+
 $$A = U\Sigma V^T$$
+
 where:
 - $U \in \mathbb{R}^{m \times m}$ is **orthogonal** — columns $u_1, \ldots, u_m$ are **left singular vectors**.
 - $V \in \mathbb{R}^{n \times n}$ is **orthogonal** — columns $v_1, \ldots, v_n$ are **right singular vectors**.
@@ -1293,6 +1407,7 @@ The $\sigma_i$ are the **singular values**.
 ### Fundamental Relations
 
 $AV = U\Sigma$, giving for each $i$:
+
 $$Av_i = \sigma_i u_i$$
 
 The matrix $A$ maps the orthonormal right singular vectors $v_i$ to scaled orthonormal left singular vectors $\sigma_i u_i$.
@@ -1336,16 +1451,18 @@ Let $r$ = number of nonzero singular values ($\sigma_1 \geq \cdots \geq \sigma_r
 ### Low-Rank Approximation
 
 **Rank-$k$ truncated SVD:**
+
 $$A_k = \sum_{i=1}^k \sigma_i u_i v_i^T \quad (\text{rank } k \text{ matrix})$$
 
 **Theorem (Eckart–Young):** For any $k \leq r$:
+
 $$\|A - A_k\|_2 = \min_{\text{rank}(B) \leq k} \|A - B\|_2 = \sigma_{k+1}$$
 
 $A_k$ is the **best rank-$k$ approximation** to $A$ in the 2-norm.
 
 **Proof sketch:**
-- Upper bound: $A - A_k = \sum_{i>k} \sigma_i u_i v_i^T$, so $\|A - A_k\|_2 = \sigma_{k+1}$.
-- Lower bound: If $\text{rank}(B) \leq k$, then $\text{Null}(B)$ has dimension $\geq n-k$, which overlaps with $\text{Span}\{v_1,\ldots,v_{k+1}\}$. Pick $w \neq \mathbf{0}$ in the overlap; then $Bw = \mathbf{0}$ and $\|Aw\|_2 \geq \sigma_{k+1}\|w\|_2$, so $\|A - B\|_2 \geq \sigma_{k+1}$. $\square$
+- Upper bound: $A - A_k = \sum_{i>k} \sigma_i u_i v_i^T$, so $\|A - A_k\|\sb{2} = \sigma_{k+1}$.
+- Lower bound: If $\text{rank}(B) \leq k$, then $\text{Null}(B)$ has dimension $\geq n-k$, which overlaps with $\text{Span}\{v_1,\ldots,v_{k+1}\}$. Pick $w \neq \mathbf{0}$ in the overlap; then $Bw = \mathbf{0}$ and $\|Aw\|\sb{2} \geq \sigma_{k+1}\|w\|\sb{2}$, so $\|A - B\|\sb{2} \geq \sigma_{k+1}$. $\square$
 
 **Applications:** Data compression, noise reduction, principal component analysis (PCA).
 
@@ -1423,21 +1540,27 @@ The following are all equivalent:
 ### Key Formulas
 
 $$\text{proj}_S(v) = \sum_{i=1}^k \frac{v \cdot b_i}{b_i \cdot b_i} b_i$$
+
 *where $\{b_i\}$ is an orthogonal basis for $S$*
 
 $$P_S = A(A^TA)^{-1}A^T$$
+
 *where $A$ has columns spanning $S$*
 
 $$x_{\mathrm{LS}} = (A^TA)^{-1}A^Tb = A^+b$$
+
 *least squares solution*
 
 $$A^{-1} = \frac{1}{\det(A)}\,\mathrm{adj}(A), \qquad x_i = \frac{\det(A_i)}{\det(A)}$$
+
 *Cramer's Rule*
 
 $$\det(A) = \sum_{\sigma \in S_n} \mathrm{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}$$
+
 *permutation formula*
 
 $$A = U\Sigma V^T, \quad \mathrm{rank}(A) = r, \quad \|A\|_2 = \sigma_1, \quad |\det(A)| = \prod_i \sigma_i$$
+
 *SVD key facts*
 
 ---
