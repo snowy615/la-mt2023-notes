@@ -1248,9 +1248,9 @@ $$\|x\|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$$
 
 | $p$ | Norm | Formula | Name |
 |-----|------|---------|------|
-| 1 | $\|\cdot\|_1$ | $\sum |x_i|$ | Manhattan / taxicab |
+| 1 | $\|\cdot\|_1$ | $\sum \lvert x_i \rvert$ | Manhattan / taxicab |
 | 2 | $\|\cdot\|_2$ | $\sqrt{\sum x_i^2}$ | Euclidean |
-| $\infty$ | $\|\cdot\|_\infty$ | $\max_i |x_i|$ | Chebyshev / max norm |
+| $\infty$ | $\|\cdot\|_\infty$ | $\max_i \lvert x_i \rvert$ | Chebyshev / max norm |
 
 ### Induced Matrix Norms
 
